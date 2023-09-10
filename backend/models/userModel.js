@@ -15,10 +15,10 @@ const userSchema = new Schema({
         type:String,
         required: true
     },
-    properties: {
+    properties: [{
         type:Schema.Types.ObjectId,
         ref: 'property'
-    }
+    }]
 }, {timestamps: true});
 
 module.exports = mongoose.model('user', userSchema)

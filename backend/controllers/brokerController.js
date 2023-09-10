@@ -5,7 +5,8 @@ const validator = require('validator')
 require('dotenv').config()
 //import models
 const UserModel = require('../models/userModel');
-const propertyModel = require('../models/propertyModel')
+const propertyModel = require('../models/propertyModel');
+
 
 //sing up user
 const signUpUser = async(usertype, email, password) => {
@@ -80,7 +81,7 @@ const logIn = async (req, res) => {
         if (!matchPasswordStatus) {
             return res.status(400).json({error:'Incorrect password' })
         }
-
+ 
         //creating the jwt token for authentiation
         const token = jwt.sign({ email: existingUserCheck.email, id: existingUserCheck._id }, process.env.SECRET_KEY);
 
@@ -100,9 +101,20 @@ const getUserHompage = async(req,res) => {
     
 }
 const updateUserModel= async(req,res) =>{
-    const {id} = req.params;
-
-}
+    console.log(req.body)
+    const {chosenProperties, userEmail} = req.body;
+    const updatedUser = await UserModel.findOneAndUpdate(
+    {email: userEmail},
+    {$set: {properties: chosenProperties}},
+    { new: true })
+    if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found' });
+        }
+    
+    
+    console.log('Updated user:', updatedUser);
+    res.status(200).json({ message: 'Properties added successfully' });
+}   
 
 
 module.exports = {

@@ -3,11 +3,14 @@ const { signUp, logIn, getUserHompage, updateUserModel } = require('../controlle
 const requireAuth = require('../middleware/requireAuth')
 const router = express.Router()
 
+//home page
+
+//about page
 //sign up page 
 router.post('/sign-up', signUp)
 //login page 
 router.post('/login', logIn)
 router.use(requireAuth)
 router.get('/userhomepage',getUserHompage )
-router.post('/add-user-property/:id', updateUserModel)
+router.post('/add-user-property/', updateUserModel)
 module.exports = router

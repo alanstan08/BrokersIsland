@@ -30,6 +30,11 @@ export default function Navbar() {
               <Link className="nav-link px-2 text-white" to='/about'>
                 <li>About</li>
               </Link>
+              {user && (
+                <Link className="nav-link px-2 text-white" to='/userhomepage'>
+                  <li>Dashboard</li>
+                </Link>
+              )}
 
             </ul>
 
@@ -42,7 +47,7 @@ export default function Navbar() {
                   <button onClick={handleClick} type="button" className="btn btn-outline-light">Logout</button>
                 </div>
               )}
-            {!user && (<div>
+              {!user && (<div>
                 <Link to='/login'>
                   <button type="button" className="btn btn-outline-light me-2">Login</button>
                 </Link>
