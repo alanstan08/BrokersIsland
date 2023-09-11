@@ -7,6 +7,7 @@ import About from "./pages/About";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import Login from "./pages/Login";
 import Homepage from "./pages/userHomepage";
+import BrokerHomepage from "./pages/brokerHomepage";
 
 function App() {
   return (
@@ -40,6 +41,10 @@ function App() {
           <Route
             path='/userHomepage'
             element={<Homepage/>}
+          />
+          <Route
+            path='/brokerHomepage'
+            element={<BrokerHomepage/>}
           />
         </Routes>
         <Footer />

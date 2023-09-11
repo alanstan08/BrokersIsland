@@ -19,8 +19,15 @@ export default function Login() {
   //handle redirection
   useEffect(() => {
     if (!error && user) {
-      navigate('/userhomepage');
+      if (user.type==='user'){
+        navigate('/userhomepage');
+      }
+      else{
+        navigate('/brokerHomepage')
+      }
+      
     }
+    
   }, [user,error, navigate]);
 
   //handle inputs
