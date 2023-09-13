@@ -1,5 +1,5 @@
 const express = require('express');
-const { signUp, logIn, getUserHompage, updateUserModel } = require('../controllers/brokerController');
+const { signUp, logIn, getUserHompage, updateUserModel, accessUserInfo } = require('../controllers/brokerController');
 const requireAuth = require('../middleware/requireAuth')
 const router = express.Router()
 
@@ -12,5 +12,6 @@ router.post('/sign-up', signUp)
 router.post('/login', logIn)
 router.use(requireAuth)
 router.get('/userhomepage',getUserHompage )
-router.post('/add-user-property/', updateUserModel)
+router.post('/add-user-property', updateUserModel)
+router.get('/brokerHomepage', accessUserInfo)
 module.exports = router

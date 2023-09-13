@@ -13,7 +13,7 @@ export default function BrokerHomepage() {
             }
             try {
                 console.log(user.token)
-                const response = await fetch('http://localhost:4000/userhomepage', {
+                const response = await fetch('http://localhost:4000/brokerHomepage', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${user.token}`,
@@ -38,7 +38,10 @@ export default function BrokerHomepage() {
         fetchProperties();
 
     }, [user])
-
+    if (loading) {
+        // Show a loading indicator or message here
+        return <div>Loading...</div>;
+    }
     return (
         <div className='container'>
             <div className="p-5 mb-4 bg-body-tertiary rounded-3">

@@ -89,7 +89,6 @@ const logIn = async (req, res) => {
 
     }
     catch (error) {
-        
         return res.status(500).json({ error: error.message })
     }
 }
@@ -115,12 +114,15 @@ const updateUserModel= async(req,res) =>{
     console.log('Updated user:', updatedUser);
     res.status(200).json({ message: 'Properties added successfully' });
 }   
-
+const accessUserInfo = async(req,res) => {
+    properties = await propertyModel.find({})
+    res.status(200).json(properties)
+}
 
 module.exports = {
-    
     signUp,
     logIn,
     getUserHompage,
-    updateUserModel
+    updateUserModel,
+    accessUserInfo
 }
