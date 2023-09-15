@@ -7,12 +7,12 @@ export default function BrokerHomepage() {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchProperties = async () => {
-            if (!user && !user.token) {
+            if (!user || !user.token) {
                 // User or user.token is not available yet, do not make the request
                 return;
             }
             try {
-                console.log(user.token)
+                
                 const response = await fetch('http://localhost:4000/brokerHomepage', {
                     method: 'GET',
                     headers: {
@@ -23,7 +23,8 @@ export default function BrokerHomepage() {
 
                 if (response.ok) {
                     const json = await response.json();
-                    setPropertyList(json);
+                    console.log(json.updatedProperties)
+                    setPropertyList(json.updatedProperties);
                 }
             }
             catch (error) {
@@ -59,7 +60,7 @@ export default function BrokerHomepage() {
                         <h1 className="text-3xl fw-bold ">Contact your Clients now !!</h1>
                         <form >
                             <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                                {propertyList.map((property) => (
+                                {Array.isArray(propertyList) && propertyList.map((property) => (
                                     <div className="card border-2 m-3 rounded" style={{ width: '18rem' }} key={property._id}>
                                         <img src={property.img} className="card-img-top h-40 w-full object-cover" alt="propertyimage"></img>
                                         <div className="card-body col-12-">
@@ -68,11 +69,15 @@ export default function BrokerHomepage() {
                                             <p className="card-text">{property.Rooms}</p>
                                             <p className="card-text">{property.Price}</p>
                                             <p className="card-text">{property.Amenties}</p>
+                                            <ol className="card-text" start="1">Interested:</ol>
+                                            <ol className="card-text">
+                                                {property.Interested.map((user , index) => (
+                                                    <li key={user}>{index}.{user}</li>
+                                                ))}
+                                            </ol>
+                                        <div>
 
-
-                                            <div>
-
-                                            </div>
+                                        </div>
                                         </div>
 
                                     </div>

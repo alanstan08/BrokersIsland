@@ -27,10 +27,7 @@ const propertySchema = new Schema({
         type: String,
         required: true
     },
-    Interested: {
-        type:Schema.Types.ObjectId,
-        ref: 'user'
-    }
+    Interested: [String]
 }, {timestamps: true});
 
 module.exports = mongoose.model('property', propertySchema)

@@ -8,6 +8,7 @@ const UserModel = require('../models/userModel');
 const propertyModel = require('../models/propertyModel');
 
 
+
 //sing up user
 const signUpUser = async(usertype, email, password) => {
 
@@ -40,9 +41,6 @@ const signUpUser = async(usertype, email, password) => {
         password: hashPass
 
     });
-    //creating the jwt token for authentiation
-    
-    
 
     return result;
 }
@@ -107,16 +105,40 @@ const updateUserModel= async(req,res) =>{
     {$set: {properties: chosenProperties}},
     { new: true })
     if (!updatedUser) {
-        return res.status(404).json({ message: 'User not found' });
+        res.status(404).json({ message: 'User not found' });
         }
     
     
     console.log('Updated user:', updatedUser);
     res.status(200).json({ message: 'Properties added successfully' });
-}   
+}
+
 const accessUserInfo = async(req,res) => {
-    properties = await propertyModel.find({})
-    res.status(200).json(properties)
+    try{
+        const properties = await propertyModel.find({})
+    
+        const updatedProperties=[]
+        for (const property of properties) {
+            const users = await UserModel.find({ properties: property._id });
+            const updatedProp = await propertyModel.findOneAndUpdate(
+                { _id: property._id },
+                { $set: { Interested: users.map(user => user.email) } },
+                { new: true }
+            );
+
+            if (!updatedProp) {
+                return res.status(404).json({ message: 'Property not found' });
+            }
+
+            updatedProperties.push(updatedProp);
+        }
+
+        console.log('Updated properties:', updatedProperties);
+        res.status(200).json({ message: 'Properties updated successfully', updatedProperties });
+    }catch (error){
+        console.error('Error:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
 }
 
 module.exports = {

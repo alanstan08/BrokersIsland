@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Homepage() {
@@ -7,9 +8,10 @@ export default function Homepage() {
     const [propertyList, setPropertyList] = useState([]);
     const [chosenProperties, setChosenProperties] = useState([])
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchProperties = async () => {
-            if (!user && !user.token) {
+            if (!user || !user.token) {
                 // User or user.token is not available yet, do not make the request
                 return;
               }
@@ -71,13 +73,15 @@ export default function Homepage() {
                 
             },
             });
-            console.log('Request completed.');
+            alert('Request completed.');
             if(response.ok){
                 console.log('Property added succesfully')
+                navigate('/userhomepage')
             }
             else{
                 console.log('Failed to add properties')
             }
+            
     } catch (error) {
         console.error('An error occured:',error)
     }}
