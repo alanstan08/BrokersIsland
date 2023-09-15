@@ -65,16 +65,17 @@ export default function BrokerHomepage() {
                                         <img src={property.img} className="card-img-top h-40 w-full object-cover" alt="propertyimage"></img>
                                         <div className="card-body col-12-">
                                             <h5 className="card-title m-0 text-lg fw-bold">{property.title}</h5>
-                                            <p className="card-text">{property.type}</p>
-                                            <p className="card-text">{property.Rooms}</p>
-                                            <p className="card-text">{property.Price}</p>
-                                            <p className="card-text">{property.Amenties}</p>
+                                            <p className="card-text">Type: {property.type}</p>
+                                            <p className="card-text">BHK:{property.Rooms}</p>
+                                            <p className="card-text">Price{property.Price}</p>
+                                            <p className="card-text">Amenties: {property.Amenties}</p>
                                             <ol className="card-text" start="1">Interested:</ol>
                                             <ol className="card-text">
                                                 {property.Interested.map((user , index) => (
                                                     <li key={user}>{index}.{user}</li>
                                                 ))}
                                             </ol>
+                                            <p className="card-text">Location: {property.location}</p>
                                         <div>
 
                                         </div>

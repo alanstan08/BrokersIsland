@@ -90,7 +90,14 @@ const logIn = async (req, res) => {
         return res.status(500).json({ error: error.message })
     }
 }
-
+//search result
+const specificProperties = async(req,res) => {
+    const query = req.params.query;
+    const properties = await propertyModel.find({location: query})
+    console.log(properties)
+    res.status(200).json(properties);
+   
+}
 
 const getUserHompage = async(req,res) => {
     properties = await propertyModel.find({})
@@ -146,5 +153,6 @@ module.exports = {
     logIn,
     getUserHompage,
     updateUserModel,
-    accessUserInfo
+    accessUserInfo,
+    specificProperties
 }
