@@ -93,8 +93,8 @@ const logIn = async (req, res) => {
 //search result
 const specificProperties = async(req,res) => {
     const query = req.params.query;
-    const properties = await propertyModel.find({location: query})
-    console.log(properties)
+    const Location = query[0].toUpperCase()+query.slice(1);
+    const properties = await propertyModel.find({location: Location})
     res.status(200).json(properties);
    
 }
