@@ -95,7 +95,7 @@ export default function Homepage() {
             <div className='container'>
                 <div className="p-5 mb-4 bg-body-tertiary rounded-3">
                     <div className="container-fluid py-5">
-                        <h1 className="text-4xl fw-bold antialiased md:subpixel-antialiased text-center">Welcome {user.email} !!</h1>
+                        <h1 className="text-4xl fw-bold antialiased md:subpixel-antialiased text-center">Welcome {user.user} !!</h1>
                         <p className="col-md-12 m-4  text-lg antialiased md:subpixel-antialiased italic">Welcome to your user homepage dashboard! We're thrilled to have you here and ready to assist you in finding the perfect property. Are you interested in exploring available properties for sale or rent? Let us know your preference, and we'll help you get started on your journey to find your dream home. Whether you're looking for a new place to call your own or exploring rental options, we're here to make your property search a breeze. Let's begin!</p>
 
                     </div>

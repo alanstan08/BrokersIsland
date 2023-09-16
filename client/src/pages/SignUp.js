@@ -21,9 +21,15 @@ export default function SignUp() {
   }
   //handle redirection
   useEffect(() => {
-    if (!error && user) {
-      navigate('/userhomepage');
+    if(!error && user){
+      if (user.type==='user'){
+        navigate('/userhomepage');
+      }
+      else{
+        navigate('/brokerHomepage')
+      }
     }
+    
   }, [user,error, navigate]);
 
   //function to handle changes

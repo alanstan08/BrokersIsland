@@ -8,6 +8,9 @@ import SearchResultsPage from "./pages/SearchResultsPage";
 import Login from "./pages/Login";
 import Homepage from "./pages/userHomepage";
 import BrokerHomepage from "./pages/brokerHomepage";
+import DiversePropertyPortfolio from "./pages/DiversePropertyPortfolio"
+import StreaminedInvestmentProcess from "./pages/StreaminedInvestmentProcess";
+import StandardBrokerageCosts from "./pages/StandardBrokerageCosts";
 
 function App() {
   return (
@@ -45,6 +48,18 @@ function App() {
           <Route
             path='/brokerHomepage'
             element={<BrokerHomepage/>}
+          />
+          <Route
+            path='/diversepropertyportfolio'
+            element={<DiversePropertyPortfolio/>}
+          />
+          <Route
+            path='/streamlinedinvestprocess'
+            element={<StreaminedInvestmentProcess/>}
+          />
+          <Route
+            path='/standardbrokeragecosts'
+            element={<StandardBrokerageCosts/>}
           />
         </Routes>
         <Footer />

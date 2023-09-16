@@ -50,9 +50,10 @@ function SearchResultsPage() {
 
                   </div>
                 ))}
-                <button className="bg-gradient-to-r from-orange-500 to-green-500 rounded col-12 p-1 ml-4 border-2 border-black" onClick={handleClick}>Login to book your properties</button>
-              </div>
+               
           </div>
+          <button className="bg-gradient-to-r from-orange-500 to-green-500 rounded col-12 p-1 ml-4 border-2 border-black" onClick={handleClick}>Login to book your properties</button>
+              </div>
         </div>
 
       </div>

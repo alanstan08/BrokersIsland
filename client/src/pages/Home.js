@@ -46,7 +46,9 @@ export default function Home() {
                     </div>
                     <h3 className="fs-2 text-body-emphasis">Diverse Property Portfolio</h3>
                     <p>We offer a diverse range of rental properties to suit various investment goals, whether you're looking for residential, commercial, or vacation rentals. Our portfolio includes properties in prime locations with strong income potential.</p>
-                        <button className='btn btn-info'>
+                        <button className='btn btn-info' onClick={()=>{
+                            navigate('/diversepropertyportfolio')
+                        }}>
                             learn more
                         </button>
                 </div >
@@ -57,7 +59,9 @@ export default function Home() {
                     </div>
                     <h3 className="fs-2 text-body-emphasis">Streamlined Investment Process</h3>
                     <p>Our services streamline the property acquisition process, from property identification and due diligence to negotiation and acquisition. We ensure a hassle-free experience, allowing you to focus on building your real estate portfolio.</p>
-                    <button className='btn btn-info'>
+                    <button className='btn btn-info' onClick={()=>{
+                            navigate('/streamlinedinvestprocess')
+                        }}>
                         learn more
                     </button>
                 </div>
@@ -67,7 +71,9 @@ export default function Home() {
                     </div>
                     <h3 className="fs-2 text-body-emphasis"> Providing Standardized Brokerage Costs</h3>
                     <p>we offer standardized brokerage costs to provide clear and equitable pricing for all your real estate needs. Our transparent fee structure ensures fairness and consistency, making your real estate transactions straightforward and hassle-free. Trust us for a cost-effective and honest approach to real estate brokerage.</p>
-                    <button className='btn btn-info'>
+                    <button className='btn btn-info' onClick={()=>{
+                            navigate('/standardbrokeragecosts')
+                        }}>
                         learn more
                     </button>
                 </div>
