@@ -12,7 +12,7 @@ export default function BrokerHomepage() {
                 return;
             }
             try {
-                
+
                 const response = await fetch('http://localhost:4000/brokerHomepage', {
                     method: 'GET',
                     headers: {
@@ -70,15 +70,14 @@ export default function BrokerHomepage() {
                                             <p className="card-text">Price{property.Price}</p>
                                             <p className="card-text">Amenties: {property.Amenties}</p>
                                             <ol className="card-text" start="1">Interested:</ol>
-                                            <ol className="card-text">
-                                                {property.Interested.map((user , index) => (
-                                                    <li key={user}>{index}.{user}</li>
-                                                ))}
-                                            </ol>
-                                            <p className="card-text">Location: {property.location}</p>
-                                        <div>
-
-                                        </div>
+                                            <div className="card-text">
+                                                <p className="font-bold mb-2">Interested:</p>
+                                                <ol className="list-decimal pl-4">
+                                                    {property.Interested.map((user, index) => (
+                                                        <li key={user} className="mb-1">{user}</li>
+                                                    ))}
+                                                </ol>
+                                            </div>
                                         </div>
 
                                     </div>
