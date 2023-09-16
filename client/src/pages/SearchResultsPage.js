@@ -26,6 +26,9 @@ function SearchResultsPage() {
   } catch (error) {
     console.log('Error fetching properties', error)
   }
+  const handleClick = () => {
+    navigate('/login')
+  }
   return (
       <div className="row align-items-md-stretch m-5 ">
         <div className="col-md-12 col-sm-12 ">
@@ -43,14 +46,11 @@ function SearchResultsPage() {
                       <p className="card-text">Amenities: {property.Amenities}</p>
                       <p className="card-text">Location: {property.location}</p>
                       
-                      <div>
-
-                      </div>
                     </div>
 
                   </div>
                 ))}
-
+                <button className="bg-gradient-to-r from-orange-500 to-green-500 rounded col-12 p-1 ml-4 border-2 border-black" onClick={handleClick}>Login to book your properties</button>
               </div>
           </div>
         </div>
