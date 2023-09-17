@@ -7,6 +7,16 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    contact: {
+        name: {
+            type: String,
+            
+        },
+        phonenumber: {
+            type: Number,
+            
+        }
+    },
     email: {
         type:String,
         required: true

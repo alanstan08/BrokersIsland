@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Homepage() {
     const { user } = useAuthContext()
+    const initialValues = {name: "", PhoneNumber: ""};
+    const [contact, setContact] = useState(initialValues)
     const [propertyList, setPropertyList] = useState([]);
     const [chosenProperties, setChosenProperties] = useState([])
     const [loading, setLoading] = useState(true);
@@ -14,7 +16,7 @@ export default function Homepage() {
             if (!user || !user.token) {
                 // User or user.token is not available yet, do not make the request
                 return;
-              }
+            }
             try {
                 console.log(user.token)
                 const response = await fetch('http://localhost:4000/userhomepage', {
@@ -38,9 +40,9 @@ export default function Homepage() {
                 setLoading(false);
             }
         }
-        
-            fetchProperties();
-        
+
+        fetchProperties();
+
     }, [user])
     useEffect(() => {
         console.log(chosenProperties)
@@ -57,34 +59,72 @@ export default function Homepage() {
     const isPropertyChecked = (propID) => {
         return chosenProperties.includes(propID)
     }
-    const handleSubmit = async(e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const requestBody = {
             chosenProperties: chosenProperties,
             userEmail: user.email,
-          };
-          try{
+        };
+        try {
             const response = await fetch('http://localhost:4000/add-user-property', {
-            method:'POST',
-            body: JSON.stringify(requestBody),
-            headers:{
-                'Authorization' : `Bearer ${user.token}`,
-                'Content-type': 'application/json'
-                
-            },
+                method: 'POST',
+                body: JSON.stringify(requestBody),
+                headers: {
+                    'Authorization': `Bearer ${user.token}`,
+                    'Content-type': 'application/json'
+
+                },
             });
             alert('Request completed.');
-            if(response.ok){
+            if (response.ok) {
                 console.log('Property added succesfully')
                 navigate('/userhomepage')
             }
-            else{
+            else {
                 console.log('Failed to add properties')
             }
+
+        } catch (error) {
+            console.error('An error occured:', error)
+        }
+    }
+    //_____CONTACT DETAILS __________________
+    const handleContactChange = (event) => {
+        const { name, value } = event.target;
+        setContact({...contact, [name]: value})
+    }
+
+    const handleContactSubmit = async(e) => {
+        e.preventDefault();
+        const contactdetails = {...contact}
+        const requestBody = {
+            contact: contactdetails,
+            userEmail: user.email
+
+        }
+        try {
+            const response = await fetch('http://localhost:4000/addcontactdetails', {
+                method: 'POST',
+                body: JSON.stringify(requestBody),
+                headers: {
+                    'Authorization': `Bearer ${user.token}`,
+                    'Content-type': 'application/json'
+
+                },
+            });
             
-    } catch (error) {
-        console.error('An error occured:',error)
-    }}
+            if (response.ok) {
+                alert("contact set");
+            }
+            else {
+                alert("contact not set");
+            }
+
+        } catch (error) {
+            console.error('An error occured:', error)
+        }
+
+    }
     if (loading) {
         // Show a loading indicator or message here
         return <div>Loading...</div>;
@@ -95,10 +135,24 @@ export default function Homepage() {
             <div className='container'>
                 <div className="p-5 mb-4 bg-body-tertiary rounded-3">
                     <div className="container-fluid py-5">
-                        <h1 className="text-4xl fw-bold antialiased md:subpixel-antialiased text-center">Welcome {user.user} !!</h1>
+                        <h1 className="text-4xl fw-bold antialiased md:subpixel-antialiased text-center">Welcome {user.email} !!</h1>
                         <p className="col-md-12 m-4  text-lg antialiased md:subpixel-antialiased italic">Welcome to your user homepage dashboard! We're thrilled to have you here and ready to assist you in finding the perfect property. Are you interested in exploring available properties for sale or rent? Let us know your preference, and we'll help you get started on your journey to find your dream home. Whether you're looking for a new place to call your own or exploring rental options, we're here to make your property search a breeze. Let's begin!</p>
 
                     </div>
+                </div>
+                <div className="p-5 bg-body-tertiary rounded-3 text-center">
+                    <h2 className="text-2xl fw-bold">Contact Details</h2>
+                    <form onSubmit={handleContactSubmit}>
+                        <div className="mb-3">
+                            <label htmlFor="contactName" className="form-label">Your Name</label>
+                            <input name='name' type="text" className="form-control" value={contact.name} id="contactName" placeholder="Enter your name" onChange = {handleContactChange} />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="contactPhone" className="form-label">Phone Number</label>
+                            <input name="PhoneNumber" type="tel" value={contact.PhoneNumber} className="form-control" id="contactPhone" placeholder="Enter your phone number" onChange = {handleContactChange}/>
+                        </div>
+                        <button type="submit" className="bg-blue-500 text-xs hover:bg-blue-600 text-white font-bold rounded-full px-4 py-2" >Submit</button>
+                    </form>
                 </div>
                 <div className="row align-items-md-stretch ">
                     <div className="col-md-12 col-sm-12 g">
@@ -132,10 +186,10 @@ export default function Homepage() {
 
                                         </div>
                                     ))}
-                                    
+
                                 </div>
                                 <div className="flex justify-center">
-                                <button className="bg-amber-400 rounded col-2 p-1 ml-4 mt-4 border-2 border-black" type="submit">Submit</button>
+                                    <button className="bg-amber-400 rounded col-2 p-1 ml-4 mt-4 border-2 border-black" type="submit">Submit</button>
                                 </div>
                             </form>
                         </div>

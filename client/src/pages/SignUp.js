@@ -81,8 +81,7 @@ export default function SignUp() {
               <input name="password" type="password" className="form-control" id="floatingPassword" placeholder="Password" value={formvalues.password} onChange={handleChange} />
               <label htmlFor="floatingPassword">New Password</label>
             </div>
-            <div className='m-2 text-red-400'>
-            </div>
+            
             <div className="form-floating">
               <input type="password" className="form-control" id="floatingPassword" placeholder="Password" value={repass} onChange={handlePasswordCheck} />
               <label htmlFor="floatingPassword ">Re enter new password</label>

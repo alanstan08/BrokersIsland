@@ -50,7 +50,7 @@ const signUp = async (req, res) => {
     try {
         const user = await signUpUser(usertype, email, password)
         const token = jwt.sign({ email: user.email, id: user._id }, process.env.SECRET_KEY);
-        return res.status(200).json({type:user.usertype,  user: user.email, token: token });
+        return res.status(200).json({type:user.usertype,  email: user.email, token: token });
     }
     catch (error) {
         console.log("error")
@@ -104,6 +104,22 @@ const getUserHompage = async(req,res) => {
     res.status(200).json(properties)
     
 }
+const Contactdetails = async(req,res) => {
+    const {contact, userEmail} = req.body ;
+    console.log(contact)
+    const updatedUser = await UserModel.findOneAndUpdate(
+        {email: userEmail},
+        {$set: {'contact.name': contact.name,
+        'contact.phonenumber': contact.PhoneNumber,}},
+        {new:true}
+    )
+    
+    if(!updatedUser){
+        res.status(404).json({message: 'User not found'})
+    }
+    res.status(200).json({message: 'Contact details added'})
+
+}
 const updateUserModel= async(req,res) =>{
     console.log(req.body)
     const {chosenProperties, userEmail} = req.body;
@@ -129,10 +145,13 @@ const accessUserInfo = async(req,res) => {
             const users = await UserModel.find({ properties: property._id });
             const updatedProp = await propertyModel.findOneAndUpdate(
                 { _id: property._id },
-                { $set: { Interested: users.map(user => user.email) } },
+                { $set: { Interested: users.map(user => ({
+                    email: user.email,
+                    contact: user.contact,
+                })) } },
                 { new: true }
             );
-
+             console.log(updatedProp)   
             if (!updatedProp) {
                 return res.status(404).json({ message: 'Property not found' });
             }
@@ -154,5 +173,6 @@ module.exports = {
     getUserHompage,
     updateUserModel,
     accessUserInfo,
-    specificProperties
+    specificProperties,
+    Contactdetails
 }

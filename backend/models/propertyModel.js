@@ -31,7 +31,15 @@ const propertySchema = new Schema({
         type: String,
         required: true
     },
-    Interested: [String]
+    Interested: [
+        {
+            email: String,
+            contact: {
+                name: String,
+                phonenumber: Number
+            }
+        }
+    ]
 }, {timestamps: true});
 
 module.exports = mongoose.model('property', propertySchema)

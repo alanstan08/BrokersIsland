@@ -49,9 +49,7 @@ export default function BrokerHomepage() {
                 <div className="container-fluid py-5">
                     <h1 className="text-4xl fw-bold antialiased md:subpixel-antialiased">Welcome Broker </h1>
                     <p className="col-md-12   text-lg antialiased md:subpixel-antialiased italic">Dear Esteemed Brokers,
-
                         We are excited to introduce you to our Broker's Dashboard, a powerful tool designed to enhance your real estate business and connect you with potential clients. In addition to this exciting opportunity, we are thrilled to offer an exclusive 10% commission for every successful sale made through our platform.</p>
-
                 </div>
             </div>
             <div className="row align-items-md-stretch ">
@@ -72,11 +70,20 @@ export default function BrokerHomepage() {
                                             <ol className="card-text" start="1">Interested:</ol>
                                             <div className="card-text">
                                                 <p className="font-bold mb-2">Interested:</p>
-                                                <ol className="list-decimal pl-4">
+                                                <ol className="list-decimal pl-4 ">
                                                     {property.Interested.map((user, index) => (
-                                                        <li key={user} className="mb-1">{user}</li>
+                                                        <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+                                                            <li key={user} className="mb-1 text-sm sm:col-span-2 md:col-span-2 lg:col-span-2">{user.email}</li>
+                                                            <button className=' bg-blue-500 text-xs hover:bg-blue-600 text-xs text-white font-bold rounded-full h-10 w-20' value={JSON.stringify(user)} onClick={(e) => {
+                                                                e.preventDefault();
+                                                                alert(`Contact Details:\nName: ${user.contact.name}\nPhone Number: ${user.contact.phonenumber}`)
+                                                            }}>Contact</button>
+                                                        </div>
                                                     ))}
+
                                                 </ol>
+
+
                                             </div>
                                         </div>
 
@@ -84,7 +91,7 @@ export default function BrokerHomepage() {
                                 ))}
 
                             </div>
-                            <button className="bg-amber-400 rounded col-12 p-1 ml-4 border-2 border-black" type="submit">Submit</button>
+
                         </form>
                     </div>
                 </div>
