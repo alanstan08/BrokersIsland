@@ -47,12 +47,16 @@ INSTALLATION
   ```PORT=4000```
   ```MONGO_URI=ur database url```
   SECRET_KEY=any secret key```
-6. start client
+6. ```
+   start client
    cd client/
    npm start
+   ```
 7. start server
-   cd backend/
+    ```
+    cd backend/
    npm start
+    ```
 USAGE
 1. add a few properties in the database following the properties model schema as seen in the models folder
 2. create a user and login. the user page should look like this: 
