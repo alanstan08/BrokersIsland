@@ -47,7 +47,7 @@ export default function BrokerHomepage() {
         <div className='container'>
             <div className="p-5 mb-4 bg-body-tertiary rounded-3">
                 <div className="container-fluid py-5">
-                    <h1 className="text-4xl fw-bold antialiased md:subpixel-antialiased">Welcome Broker </h1>
+                    <h1 className="text-4xl fw-bold antialiased md:subpixel-antialiased mb-3 italic">Welcome Broker!! </h1>
                     <p className="col-md-12   text-lg antialiased md:subpixel-antialiased italic">Dear Esteemed Brokers,
                         We are excited to introduce you to our Broker's Dashboard, a powerful tool designed to enhance your real estate business and connect you with potential clients. In addition to this exciting opportunity, we are thrilled to offer an exclusive 10% commission for every successful sale made through our platform.</p>
                 </div>
@@ -55,7 +55,7 @@ export default function BrokerHomepage() {
             <div className="row align-items-md-stretch ">
                 <div className="col-md-12 col-sm-12 g">
                     <div className="h-100 p-5 bg-gradient-to-r from-red-500 to-yellow-500 rounded-3 ">
-                        <h1 className="text-3xl fw-bold ">Contact your Clients now !!</h1>
+                        <h1 className="text-3xl fw-bold text-center m-3">Contact your Clients now !!</h1>
                         <form >
                             <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                                 {Array.isArray(propertyList) && propertyList.map((property) => (
