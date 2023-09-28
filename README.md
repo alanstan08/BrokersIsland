@@ -34,19 +34,19 @@ Prerequisites
 
 INSTALLATION
 1. Clone the repository:
-  git clone https://github.com/alanstan08/BrokersIsland.git
+```git clone https://github.com/alanstan08/BrokersIsland.git```
 2. Navigate to the project directory:
-  cd BrokersIsland
+  ```cd BrokersIsland```
 3. Install server dependencies
-  cd backend/
-  npm install
+  ```cd backend/```
+  ```npm install```
 4. install client dependencies
-  cd client
-  npm install
+  ```cd client```
+ ``` npm install```
 5. Create a .env file in the server directory and set environment variables (e.g., database connection string, API keys):
-  PORT=4000
-  MONGO_URI=ur database url
-  SECRET_KEY=any secret key
+  ```PORT=4000```
+  ```MONGO_URI=ur database url```
+  SECRET_KEY=any secret key```
 6. start client
    cd client/
    npm start
