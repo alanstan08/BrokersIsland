@@ -47,12 +47,12 @@ INSTALLATION
   ```PORT=4000```
   ```MONGO_URI=ur database url```
   SECRET_KEY=any secret key```
-6. start client
+6. in one terminal start client
     ```
     cd client/
    npm start
    ```
-8. start server
+8. In the other terminal start server
     ```
     cd backend/
    npm start
