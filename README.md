@@ -44,9 +44,11 @@ INSTALLATION
   ```cd client```
  ``` npm install```
 5. Create a .env file in the server directory and set environment variables (e.g., database connection string, API keys):
-  ```PORT=4000```
-  ```MONGO_URI=ur database url```
-  SECRET_KEY=any secret key```
+  ```
+  PORT=4000
+  MONGO_URI=ur database url
+  SECRET_KEY=any secret key
+```
 6. in one terminal start client
     ```
     cd client/
