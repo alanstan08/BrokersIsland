@@ -7,7 +7,7 @@ import About from "./pages/About";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import Login from "./pages/Login";
 import Homepage from "./pages/userHomepage";
-import BrokerHomepage from "./pages/brokerHomepage";
+import BrokerHomepage from "./pages/brokerhomepage";
 import DiversePropertyPortfolio from "./pages/DiversePropertyPortfolio"
 import StreaminedInvestmentProcess from "./pages/StreaminedInvestmentProcess";
 import StandardBrokerageCosts from "./pages/StandardBrokerageCosts";
